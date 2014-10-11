@@ -1,5 +1,5 @@
 <?php
-$url = "http://182.92.195.40:8080/";
+$url = "http://182.92.195.0:8080/";
 $url = $url . "authsms";
 //echo $url . "<br />";
 
