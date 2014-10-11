@@ -5,8 +5,11 @@ apt-get install apache2 apache2-doc apache2-utils
 apt-get install libapache2-mod-php5 php5 php-pear php5-xcache
 
 # 复制站点配置文件
-scp  wlsite  ->  /etc/apache2/sites-available/wlsite
-scp  adminsite  ->  /etc/apache2/sites-available/adminsite
+wget https://github.com/usspupdates/ihost/blob/master/apache/wlsite
+wget https://github.com/usspupdates/ihost/blob/master/apache/adminsite
+
+cp  ./wlsite  /etc/apache2/sites-available/wlsite
+cp  ./adminsite   /etc/apache2/sites-available/adminsite
 
 # 激活站点配置文件
 unlink  /etc/apache2/sites-enabled/000-default
