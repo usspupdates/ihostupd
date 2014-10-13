@@ -12,9 +12,12 @@ in /meida/ihostdata/prog
 === git clone ===
 
 git clone git@github.com:unissoft-bj/microhr
+# or
+git clone https://github.com/unissoft-bj/microhr.git
 
 git clone git@github.com:unissoft-bj/microma
-
+# or
+git clone https://github.com/unissoft-bj/microhr.git
 
 === git pull ===
 # 获取远程分支上的更新
@@ -52,3 +55,6 @@ git commit -m "your message"
 git push
 
 ###
+# 删除本地分支，全新重建
+rm -rf microhr
+git clone git@github.com:unissoft-bj/microhr
