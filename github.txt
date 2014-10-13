@@ -16,6 +16,16 @@ git clone git@github.com:unissoft-bj/microhr
 git clone git@github.com:unissoft-bj/microma
 
 
+=== git pull ===
+# 获取远程分支上的更新
+# 会自动与本地分支合并
+# 同一位置的不同修改会引发冲突
+git pull
+
+# 强制用远程分支覆盖本地分支
+# 抛弃本地修改
+git fetch -f
+
 === git push ===
 git add -A
 git commit -m "your message"
