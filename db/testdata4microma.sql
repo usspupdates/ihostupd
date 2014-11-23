@@ -8,3 +8,4 @@ insert  into `ma_news`(`id`,`cid`,`tid`,`title`,`des`,`keyword`,`from`,`author`,
 # a sample guestbook entry by Li Ming
 delete from `ma_guestbook`;
 insert  into `ma_guestbook`(`id`,`content`,`flag`,`creattime`,`uid`) values (1,'欢迎光临！',1,'20:05:55',80);
+
