@@ -1,3 +1,9 @@
+# get up-to-date files
+# in /usr/src/ihost
+git pull
+# in /usr/src/ihostupd
+git pull
+
 # make /usr/bin/wlcap executive
 chmod  +x  /usr/bin/wlcap
 
@@ -8,7 +14,13 @@ mysql  -uroot  -p  wlsp  <  db/upd4img1121-modify.sql
 #mysql  -uroot  -p  wlsp  <  db/upd4img1121-rebuild.sql
 
 # reduce grace period of the hotspot
-# to increase the opprtunity of the first page push
+# to increase the opportunity of the first page push
 sed -i 's|HS_DEFIDLETIMEOUT=300|HS_DEFIDLETIMEOUT=30|g' /etc/chilli/defaults
 # check the new value
 cat /etc/chilli/defaults | grep HS_DEFIDLETIMEOUT=
+
+# stand alone config file for ruckus ap setup
+cp  /usr/src/ihost/wlcap/configsrks.xml   /media/data/ihost/wlcap/configsrks.xml
+ln  -sf  /media/data/ihost/wlcap/configsrks.xml  /root/configsrks.xml
+cp  /usr/src/ihost/wlcap/srks.py   /media/data/ihost/wlcap/srks.py
+cp  /usr/src/ihost/wlcap/srksreset.py   /media/data/ihost/wlcap/srksreset.py
