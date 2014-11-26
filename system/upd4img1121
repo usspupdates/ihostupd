@@ -1,2 +1,14 @@
 # make /usr/bin/wlcap executive
 chmod  +x  /usr/bin/wlcap
+
+# add column "userrole" in table "useraccounts"
+mysql  -uroot  -p  wlsp  <  db/upd4img1121-modify.sql
+#  - or -
+# rebuild table "useraccounts" with the added column "userrole"
+#mysql  -uroot  -p  wlsp  <  db/upd4img1121-rebuild.sql
+
+# reduce grace period of the hotspot
+# to increase the opprtunity of the first page push
+sed -i 's|HS_DEFIDLETIMEOUT=300|HS_DEFIDLETIMEOUT=30|g' /etc/chilli/defaults
+# check the new value
+cat /etc/chilli/defaults | grep HS_DEFIDLETIMEOUT=
