@@ -24,3 +24,17 @@ cp  /usr/src/ihost/wlcap/configsrks.xml   /media/data/ihost/wlcap/configsrks.xml
 ln  -sf  /media/data/ihost/wlcap/configsrks.xml  /root/configsrks.xml
 cp  /usr/src/ihost/wlcap/srks.py   /media/data/ihost/wlcap/srks.py
 cp  /usr/src/ihost/wlcap/srksreset.py   /media/data/ihost/wlcap/srksreset.py
+
+# new select criteria (pntmaster) in onsite.py
+cp  /usr/src/ihost/wlcap/onsite.py   /media/data/ihost/wlcap/onsite.py
+
+# user integral module
+cp  -r  /usr/src/ihost/userpnt  /media/data/ihost/userpnt
+ln  -sf  /media/data/ihost/userpnt/configpnt.xml  /root/configpnt.xml
+ln  -sf  /media/data/ihost/userpnt/sta2pnt.py  /root/sta2pnt.py
+ln  -sf  /media/data/ihost/userpnt/pnt2user.py  /root/pnt2user.py
+# prepare database tables
+mysql -uroot -p  wlsp <  /usr/src/ihostupd/db/tb4userpnt.sql
+# setup cron job
+echo "*/1 * * * * sudo python /root/sta2pnt.py &" >> /var/spool/cron/crontabs/root
+echo "*/10 * * * * sudo python /root/pnt2user.py &" >> /var/spool/cron/crontabs/root
