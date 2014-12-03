@@ -21,7 +21,7 @@ CREATE TABLE `userpoints` (
   PRIMARY KEY (`id`),
   KEY `userid` (`userid`),
   KEY `mac` (`mac`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 
 ## ----------------------------
@@ -47,7 +47,7 @@ CREATE TABLE `userlog` (
   `rectime` datetime DEFAULT NULL,	#	记录时间
   PRIMARY KEY (`id`),
   KEY `usercode` (`usercode`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 
 GRANT SELECT, INSERT, UPDATE, DELETE ON wlsp.userpoints TO 'auth'@'127.0.0.1';
