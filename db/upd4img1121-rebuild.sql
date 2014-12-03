@@ -9,6 +9,7 @@ CREATE TABLE `useraccounts` (	#
   `token` int DEFAULT NULL,	#	8位随机数，由ihost产生
   `srcnode` varchar(10) DEFAULT NULL,	#	（预留）
   `usercode` varchar(30) DEFAULT NULL,	#	用户编码（预留）
+  `user_uuid` varchar(36) DEFAULT NULL,	#	用户uuid
   `mac` varchar(36) DEFAULT NULL,	#	mac地址
   `userpass` varchar(30) DEFAULT NULL,	#	用户密码
   `useremail1` varchar(64) DEFAULT NULL,	#	用户email

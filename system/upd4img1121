@@ -38,3 +38,32 @@ mysql -uroot -p  wlsp <  /usr/src/ihostupd/db/tb4userpnt.sql
 # setup cron job
 echo "*/1 * * * * sudo python /root/sta2pnt.py &" >> /var/spool/cron/crontabs/root
 echo "*/10 * * * * sudo python /root/pnt2user.py &" >> /var/spool/cron/crontabs/root
+
+# change mysql data dir to /media/data/ihost/db, from /var/lib/mysql
+# change engine to innodb for useraccounts, userpoints, userlog 
+# refine pnt2user.py to use transaction
+service  mysql  stop
+
+unlink  /var/lib/mysql/radius
+mv  /var/lib/mysql/radius.bak  /var/lib/mysql/radius
+rm  -rf  /media/data/ihost/db/radius
+
+unlink  /var/lib/mysql/wlsp 
+mv  /var/lib/mysql/wlsp.bak  /var/lib/mysql/wlsp
+rm  -rf  /media/data/ihost/db/wlsp
+
+service  mysql start
+
+echo "drop database wlsp;" | mysql -uroot -prootatussp
+echo "create database wlsp;" | mysql -uroot -prootatussp
+mysql -uroot -prootatussp  wlsp <  /usr/src/ihost/db.schema/wlsp.sys.base.sql
+mysql -uroot -prootatussp  wlsp < /usr/src/ihost/db.schema/wlsp.sys.ihost.sql
+mysql -uroot -prootatussp  wlsp <  /usr/src/ihost/db.schema/wlsp.sys.users.sql
+
+cp  -r  /var/lib/mysql/*  /media/data/ihost/db/
+chown  -R  mysql:mysql  /media/data/ihost/db
+sed -i 's|/var/lib/mysql|/media/data/ihost/db|g' /etc/mysql/my.cnf
+
+service  mysql restart
+
+cp  /usr/src/ihost/userpnt/pnt2user.py  /media/data/ihost/userpnt/pnt2user.py
