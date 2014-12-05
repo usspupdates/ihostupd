@@ -6,3 +6,18 @@ ALTER TABLE useraccounts MODIFY COLUMN `integral` int(10) DEFAULT '0';
 ALTER TABLE useraccounts ADD COLUMN `pntfactor` int DEFAULT '1000';
 # add column user_uuid to useraccounts
 ALTER TABLE useraccounts ADD COLUMN `user_uuid` varchar(36) DEFAULT NULL;
+# add column pushflag in useraccounts table
+ALTER TABLE useraccounts ADD COLUMN `pushflag` tinyint DEFAULT '1';
+ALTER TABLE useraccounts ADD COLUMN `captcha` varchar(10) DEFAULT NULL;
+
+# add column pushflag in usermacs table
+ALTER TABLE usermacs ADD COLUMN `pushflag` tinyint DEFAULT '1';
+
+# add columns in useractive table
+ALTER TABLE useractive ADD COLUMN `srcip` varchar(64) DEFAULT NULL;
+ALTER TABLE useractive ADD COLUMN `sender` varchar(36) DEFAULT NULL;
+ALTER TABLE useractive ADD COLUMN `netid` varchar(36) DEFAULT NULL;
+ALTER TABLE useractive ADD COLUMN `progid` varchar(36) DEFAULT NULL;
+ALTER TABLE useractive ADD COLUMN `updtime` datetime DEFAULT NULL;
+ALTER TABLE useractive ADD COLUMN `pushflag` tinyint DEFAULT '1';
+ALTER TABLE useractive ADD COLUMN `srcid` int DEFAULT NULL;

@@ -65,5 +65,14 @@ chown  -R  mysql:mysql  /media/data/ihost/db
 sed -i 's|/var/lib/mysql|/media/data/ihost/db|g' /etc/mysql/my.cnf
 
 service  mysql restart
-
+# new pnt2user.py using transaction
 cp  /usr/src/ihost/userpnt/pnt2user.py  /media/data/ihost/userpnt/pnt2user.py
+
+
+# uploading user data to iserver
+cp  /usr/src/ihost/datasvc/userupload.xml  /media/data/ihost/datasvc/userupload.xml
+cp  /usr/src/ihost/datasvc/user2iserver.py  /media/data/ihost/datasvc/user2iserver.py
+ln  -sf  /media/data/ihost/datasvc/userupload.xml /root/userupload.xml 
+ln  -sf  /media/data/ihost/datasvc/user2iserver.py /root/user2iserver.py
+echo "@reboot sudo python /root/user2iserver.py &" >> /var/spool/cron/crontabs/root
+
