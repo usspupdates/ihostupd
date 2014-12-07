@@ -76,3 +76,22 @@ ln  -sf  /media/data/ihost/datasvc/userupload.xml /root/userupload.xml
 ln  -sf  /media/data/ihost/datasvc/user2iserver.py /root/user2iserver.py
 echo "@reboot sudo python /root/user2iserver.py &" >> /var/spool/cron/crontabs/root
 
+# when uploading data to iserver
+# make use of mac address as sender
+# make use of python script name as progid
+cp /usr/src/ihost/datasvc/user2iserver.py   /media/data/ihost/datasvc/user2iserver.py
+cp /usr/src/ihost/datasvc/wlsp2iserver.py  /media/data/ihost/datasvc/wlsp2iserver.py 
+cp /usr/src/ihost/smssvc/sms2iserver.py  /media/data/ihost/smssvc/sms2iserver.py
+# remove sender and progid column in xml
+sed -i 's|sender="node011" ||g' /media/data/ihost/datasvc/userupload.xml
+sed -i 's|progid="user2iserver.py" ||g' /media/data/ihost/datasvc/userupload.xml
+sed -i 's|sender="node011" ||g' /media/data/ihost/datasvc/wlspupload.xml
+sed -i 's|progid="d2iserver.py" ||g' /media/data/ihost/datasvc/wlspupload.xml 
+sed -i 's|sender="node001" ||g' /media/data/ihost/smssvc/smsupload.xml
+sed -i 's|progid="pushsms.py" ||g' /media/data/ihost/smssvc/smsupload.xml
+
+# update admin page for node info setting
+cp  /usr/src/ihost/home.admin/admin/sys/nodeget.php  /media/data/ihost/home.admin/admin/sys/nodeget.php
+cp  /usr/src/ihost/home.admin/admin/sys/nodeset.php  /media/data/ihost/home.admin/admin/sys/nodeset.php
+
+
