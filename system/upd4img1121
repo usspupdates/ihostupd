@@ -94,4 +94,19 @@ sed -i 's|progid="pushsms.py" ||g' /media/data/ihost/smssvc/smsupload.xml
 cp  /usr/src/ihost/home.admin/admin/sys/nodeget.php  /media/data/ihost/home.admin/admin/sys/nodeget.php
 cp  /usr/src/ihost/home.admin/admin/sys/nodeset.php  /media/data/ihost/home.admin/admin/sys/nodeset.php
 
+# when uploading data to iserver
+# make use of ssid in /etc/hostapd/hostapd.conf  as netid
+cp /usr/src/ihost/datasvc/user2iserver.py   /media/data/ihost/datasvc/user2iserver.py
+cp /usr/src/ihost/datasvc/wlsp2iserver.py  /media/data/ihost/datasvc/wlsp2iserver.py 
+cp /usr/src/ihost/smssvc/sms2iserver.py  /media/data/ihost/smssvc/sms2iserver.py
+# remove netid column in xml
+sed -i 's|netid="SSID-B" ||g' /media/data/ihost/datasvc/userupload.xml
+sed -i 's|netid="SSID-B" ||g' /media/data/ihost/datasvc/wlspupload.xml 
+sed -i 's|netid="SSID-A" ||g' /media/data/ihost/smssvc/smsupload.xml
+sed -i 's|netid="SSID-B" ||g' /media/data/ihost/smssvc/smsupload.xml
 
+# update pnt2user.py, set pushflag after points transfer
+cp /usr/src/ihost/userpnt/pnt2user.py /media/data/ihost/userpnt/pnt2user.py
+
+# update onsite.py, set value for rectime & updtime
+cp /usr/src/ihost/wlcap/onsite.py   /media/data/ihost/wlcap/onsite.py 
