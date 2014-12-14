@@ -109,4 +109,6 @@ sed -i 's|netid="SSID-B" ||g' /media/data/ihost/smssvc/smsupload.xml
 cp /usr/src/ihost/userpnt/pnt2user.py /media/data/ihost/userpnt/pnt2user.py
 
 # update onsite.py, set value for rectime & updtime
-cp /usr/src/ihost/wlcap/onsite.py   /media/data/ihost/wlcap/onsite.py 
+# set pushflag when toggle between onsite/offsite, online/offline
+cp /usr/src/ihost/wlcap/onsite.py   /media/data/ihost/wlcap/onsite.py
+cp /usr/src/ihost/wlcap/onsitechk.py   /media/data/ihost/wlcap/onsitechk.py 
