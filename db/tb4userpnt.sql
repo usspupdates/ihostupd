@@ -4,7 +4,7 @@
 DROP TABLE IF EXISTS `userpoints`;
 CREATE TABLE `userpoints` (
   `id` int(30) NOT NULL AUTO_INCREMENT,
-  `userid` varchar(30) DEFAULT NULL,	#	为user分配一个id，默认等于上列id
+  `userid` varchar(36) DEFAULT NULL,	#	为user分配一个id，默认等于上列id
   `srcid` int DEFAULT NULL,	#	iserver字段
   `token` int DEFAULT NULL,	#	8位随机数，由ihost产生
   `srcnode` varchar(10) DEFAULT NULL,	#	（预留）
@@ -30,7 +30,7 @@ CREATE TABLE `userpoints` (
 DROP TABLE IF EXISTS `userlog`;
 CREATE TABLE `userlog` (
   `id` int(30) NOT NULL AUTO_INCREMENT,
-  `userid` varchar(30) DEFAULT NULL,	#	为user分配一个id，默认等于上列id
+  `userid` varchar(36) DEFAULT NULL,	#	为user分配一个id，默认等于上列id
   `srcid` int DEFAULT NULL,	#	iserver字段
   `token` int DEFAULT NULL,	#	userpoints表ID
   `srcnode` varchar(10) DEFAULT NULL,	#	（预留）
