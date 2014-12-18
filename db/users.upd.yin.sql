@@ -1,54 +1,54 @@
 ## ----------------------------
 ## Table structure for useraccounts
 ## ----------------------------
-DROP TABLE IF EXISTS `useraccounts`;	#	ÓÃ»§Ö÷¼ÇÂ¼
+DROP TABLE IF EXISTS `useraccounts`;	#	ç”¨æˆ·ä¸»è®°å½•
 CREATE TABLE `useraccounts` (	#	
   `id` bigint NOT NULL AUTO_INCREMENT,	#	
-  `userid` varchar(36) DEFAULT NULL,	#	Îªuser·ÖÅäÒ»¸öuuid. It is generated in ihost by php. 
-  `srcid` int DEFAULT NULL,	#	iserver×Ö¶Î
-  `token` int DEFAULT NULL,	#	8Î»Ëæ»úÊı£¬ÓÉihost²úÉú
-  `srcnode` varchar(10) DEFAULT NULL,	#	£¨Ô¤Áô£©
-  `usercode` varchar(30) DEFAULT NULL,	#	ÓÃ»§±àÂë£¨Ô¤Áô£©
-  `user_uuid` varchar(36) DEFAULT NULL,	#	ÓÃ»§uuid. It is generated on iserver. Globally effective to cover cases that the user might change his phone and/or phone number.
-  `mac` varchar(36) DEFAULT NULL,	#	macµØÖ·
-  `userpass` varchar(30) DEFAULT NULL,	#	ÓÃ»§ÃÜÂë
-  `useremail1` varchar(64) DEFAULT NULL,	#	ÓÃ»§email
-  `useremail2` varchar(64) DEFAULT NULL,	#	ÓÃ»§±¸ÓÃemail
-  `question` varchar(30) DEFAULT NULL,	#	ÃÜÂëÌáÊ¾ÎÊÌâ
-  `answer` varchar(30) DEFAULT NULL,	#	ÃÜÂë´ğ°¸£¬ÓÃÓÚÕÒ»ØÃÜÂë
-  `fname` varchar(20) DEFAULT NULL,	#	Ãû×Ö
-  `lname` varchar(20) DEFAULT NULL,	#	ĞÕ
-  `userrole` varchar(20) default NULL, #	²»Í¬½ÇÉ«£¬Ã¿¸ömacÔÚÃ¿¸öuserroleÖĞÓĞÒ»¸ödefault userid #   100-´ú±í 200-¼Î±ö 300-Ã½Ìå 400-»áÎñ
-  `usertype` varchar(10) DEFAULT NULL,	#	ÓÃ»§ÀàĞÍ£ºÔ¤×¢²á/ÏÖ³¡×¢²á
-  `integral` int DEFAULT '0',	#	useridÏÂµÄ»ı·Ö
-  `pntfactor` int DEFAULT '1000',	#	points×ªintegralµÄÒò×Ó£¬1000´ú±í1
-  `byear` smallint DEFAULT NULL,	#	ÉúÈÕ£¬Äê
-  `bmonth` smallint DEFAULT NULL,	#	ÉúÈÕ£¬ÔÂ
-  `bday` smallint DEFAULT NULL,	#	ÉúÈÕ£¬ÈÕ
-  `gender` varchar(8) DEFAULT NULL,	#	ĞÔ±ğ
-  `occup` varchar(30) DEFAULT NULL,	#	Ö°Òµ
-  `orgn` varchar(64) DEFAULT NULL,	#	¹¤×÷µ¥Î»
-  `title` varchar(32) DEFAULT NULL,	#	Ö°Îñ
-  `cid` varchar(30) DEFAULT NULL,	#	Ö¤¼şºÅ
-  `ctype` varchar(10) DEFAULT NULL,	#	Ö¤¼şÀà±ğ
-  `regphone` varchar(30) DEFAULT NULL,	#	£¨Ô¤£©×¢²áËùÓÃµÄµç»°ºÅÂë
-  `captcha` varchar(10) DEFAULT NULL,	#	£¨Ô¤£©×¢²áËùÓÃµÄÑéÖ¤Âë
-  `phone` varchar(30) DEFAULT NULL,	#	³£ÓÃµç»°ºÅÂë
-  `address` varchar(128) DEFAULT NULL,	#	µØÖ·
-  `location` varchar(32) DEFAULT NULL,	#	ËùÔÚÇøÓò
-  `action` varchar(128) DEFAULT NULL,	#	»î¶¯£¨Ô¤Áô£©
-  `stat` varchar(3) DEFAULT '100',	#	Êı¾İ×´Ì¬ 100-ÓĞĞ§ 
-  `open1` varchar(3) DEFAULT '100',	#	Êı¾İ¶ÔÕĞÆ¸Õß¹«¿ª£¬100-¹«¿ª£¬0-²»¹«¿ª
-  `open2` varchar(3) DEFAULT '100',	#	Êı¾İ¶ÔÇóÖ°Õß¹«¿ª£¬100-¹«¿ª£¬0-²»¹«¿ª
-  `smscheck` varchar(3) DEFAULT '100',	#	¶ÌĞÅÑéÖ¤£¬100-ÑéÖ¤£¬0-²»ÑéÖ¤
-  `memo` varchar(128) DEFAULT NULL,	#	±¸×¢
-  `srcip` varchar(64) DEFAULT NULL,	#	iserver×Ö¶Î
-  `sender` varchar(36) DEFAULT NULL, 	#	iserver×Ö¶Î
-  `netid` varchar(36) DEFAULT NULL, 	#	iserver×Ö¶Î
-  `progid` varchar(36) DEFAULT NULL, 	#	iserver×Ö¶Î
-  `intid` varchar(30) DEFAULT NULL,	#	ÓëphpyunµÄ¶ÔÓ¦¹ØÏµ£¨¼ÇÂ¼Ñ§ÀúµÈÆäËû¸öÈËĞÅÏ¢£©
-  `updtime` datetime DEFAULT NULL,	#	¼ÇÂ¼¸üĞÂÊ±¼ä
-  `rectime` datetime DEFAULT NULL,	#	¼ÇÂ¼Ê±¼ä
+  `userid` varchar(36) DEFAULT NULL,	#	ä¸ºuseråˆ†é…ä¸€ä¸ªuuid. It is generated in ihost by php. 
+  `srcid` int DEFAULT NULL,	#	iserverå­—æ®µ
+  `token` int DEFAULT NULL,	#	8ä½éšæœºæ•°ï¼Œç”±ihostäº§ç”Ÿ
+  `srcnode` varchar(10) DEFAULT NULL,	#	ï¼ˆé¢„ç•™ï¼‰
+  `usercode` varchar(30) DEFAULT NULL,	#	ç”¨æˆ·ç¼–ç ï¼ˆé¢„ç•™ï¼‰
+  `user_uuid` varchar(36) DEFAULT NULL,	#	ç”¨æˆ·uuid. It is generated on iserver. Globally effective to cover cases that the user might change his phone and/or phone number.
+  `mac` varchar(36) DEFAULT NULL,	#	macåœ°å€
+  `userpass` varchar(30) DEFAULT NULL,	#	ç”¨æˆ·å¯†ç 
+  `useremail1` varchar(64) DEFAULT NULL,	#	ç”¨æˆ·email
+  `useremail2` varchar(64) DEFAULT NULL,	#	ç”¨æˆ·å¤‡ç”¨email
+  `question` varchar(30) DEFAULT NULL,	#	å¯†ç æç¤ºé—®é¢˜
+  `answer` varchar(30) DEFAULT NULL,	#	å¯†ç ç­”æ¡ˆï¼Œç”¨äºæ‰¾å›å¯†ç 
+  `fname` varchar(20) DEFAULT NULL,	#	åå­—
+  `lname` varchar(20) DEFAULT NULL,	#	å§“
+  `userrole` varchar(20) default NULL, #	ä¸åŒè§’è‰²ï¼Œæ¯ä¸ªmacåœ¨æ¯ä¸ªuserroleä¸­æœ‰ä¸€ä¸ªdefault userid #   100-ä»£è¡¨ 200-å˜‰å®¾ 300-åª’ä½“ 400-ä¼šåŠ¡
+  `usertype` varchar(10) DEFAULT NULL,	#	ç”¨æˆ·ç±»å‹ï¼šé¢„æ³¨å†Œ/ç°åœºæ³¨å†Œ
+  `integral` int DEFAULT '0',	#	useridä¸‹çš„ç§¯åˆ†
+  `pntfactor` int DEFAULT '1000',	#	pointsè½¬integralçš„å› å­ï¼Œ1000ä»£è¡¨1
+  `byear` smallint DEFAULT NULL,	#	ç”Ÿæ—¥ï¼Œå¹´
+  `bmonth` smallint DEFAULT NULL,	#	ç”Ÿæ—¥ï¼Œæœˆ
+  `bday` smallint DEFAULT NULL,	#	ç”Ÿæ—¥ï¼Œæ—¥
+  `gender` varchar(8) DEFAULT NULL,	#	æ€§åˆ«
+  `occup` varchar(30) DEFAULT NULL,	#	èŒä¸š
+  `orgn` varchar(64) DEFAULT NULL,	#	å·¥ä½œå•ä½
+  `title` varchar(32) DEFAULT NULL,	#	èŒåŠ¡
+  `cid` varchar(30) DEFAULT NULL,	#	è¯ä»¶å·
+  `ctype` varchar(10) DEFAULT NULL,	#	è¯ä»¶ç±»åˆ«
+  `regphone` varchar(30) DEFAULT NULL,	#	ï¼ˆé¢„ï¼‰æ³¨å†Œæ‰€ç”¨çš„ç”µè¯å·ç 
+  `captcha` varchar(10) DEFAULT NULL,	#	ï¼ˆé¢„ï¼‰æ³¨å†Œæ‰€ç”¨çš„éªŒè¯ç 
+  `phone` varchar(30) DEFAULT NULL,	#	å¸¸ç”¨ç”µè¯å·ç 
+  `address` varchar(128) DEFAULT NULL,	#	åœ°å€
+  `location` varchar(32) DEFAULT NULL,	#	æ‰€åœ¨åŒºåŸŸ
+  `action` varchar(128) DEFAULT NULL,	#	æ´»åŠ¨ï¼ˆé¢„ç•™ï¼‰
+  `stat` varchar(3) DEFAULT '100',	#	æ•°æ®çŠ¶æ€ 100-æœ‰æ•ˆ 
+  `open1` varchar(3) DEFAULT '100',	#	æ•°æ®å¯¹æ‹›è˜è€…å…¬å¼€ï¼Œ100-å…¬å¼€ï¼Œ0-ä¸å…¬å¼€
+  `open2` varchar(3) DEFAULT '100',	#	æ•°æ®å¯¹æ±‚èŒè€…å…¬å¼€ï¼Œ100-å…¬å¼€ï¼Œ0-ä¸å…¬å¼€
+  `smscheck` varchar(3) DEFAULT '100',	#	çŸ­ä¿¡éªŒè¯ï¼Œ100-éªŒè¯ï¼Œ0-ä¸éªŒè¯
+  `memo` varchar(128) DEFAULT NULL,	#	å¤‡æ³¨
+  `srcip` varchar(64) DEFAULT NULL,	#	iserverå­—æ®µ
+  `sender` varchar(36) DEFAULT NULL, 	#	iserverå­—æ®µ
+  `netid` varchar(36) DEFAULT NULL, 	#	iserverå­—æ®µ
+  `progid` varchar(36) DEFAULT NULL, 	#	iserverå­—æ®µ
+  `intid` varchar(30) DEFAULT NULL,	#	ä¸phpyunçš„å¯¹åº”å…³ç³»ï¼ˆè®°å½•å­¦å†ç­‰å…¶ä»–ä¸ªäººä¿¡æ¯ï¼‰
+  `updtime` datetime DEFAULT NULL,	#	è®°å½•æ›´æ–°æ—¶é—´
+  `rectime` datetime DEFAULT NULL,	#	è®°å½•æ—¶é—´
   `pushflag` smallint DEFAULT '1',
   PRIMARY KEY (`id`),	#	
   KEY `userid` (`userid`),	#	
@@ -58,59 +58,60 @@ CREATE TABLE `useraccounts` (	#
 ## ----------------------------
 ## Table structure for usermacs
 ## ----------------------------
-DROP TABLE IF EXISTS `usermacs`;	#	¼ÇÂ¼useraccount Óë ÖÕ¶Ë¡¢µç»°ºÅÂëµÄ¶à¶Ô¶à¹ØÏµ
+DROP TABLE IF EXISTS `usermacs`;	#	è®°å½•useraccount ä¸ ç»ˆç«¯ã€ç”µè¯å·ç çš„å¤šå¯¹å¤šå…³ç³»
 CREATE TABLE `usermacs` (	#	
   `id` int NOT NULL AUTO_INCREMENT,	#	
-  `userid` varchar(36) DEFAULT NULL,	#	mac¶ÔÓ¦µÄuserid£¬¶à¶Ô¶àµÄ¹ØÏµ
-  `srcid` int DEFAULT NULL,	#	iserver×Ö¶Î
-  `token` int DEFAULT NULL,	#	8Î»Ëæ»úÊı£¬ÓÉihost²úÉú
-  `srcnode` varchar(10) DEFAULT NULL,	#	£¨Ô¤Áô£©
-  `usercode` varchar(30) DEFAULT NULL,	#	ÓÃ»§±àÂë£¨Ô¤Áô£©
-  `mac` varchar(36) DEFAULT NULL,	#	ÓÃ»§µÄmacµØÖ·£¨Ò»¸ömac¿ÉÒÔ¶Ô¶àÓÃ»§£¬Ò»¸öÓÃ»§¿ÉÒÔÓĞ¶àmac£©
-  `phone` varchar(30) DEFAULT NULL,	#	ÓÃ»§Ìá¹©µÄÊÖ»úºÅ£¨ÓëÓÃ»§¶à¶Ô¶à¹ØÏµ£©
-  `stat` varchar(3) DEFAULT '100',	#	Êı¾İ×´Ì¬ 100-ÓĞĞ§ 
-  `dft` varchar(3) DEFAULT '100',	#	100-´Ë¼ÇÂ¼µÄmac-useridÊÇÄ¬ÈÏÖµ£¬Ò»¸ömacÒ»¸öuserroleÏÂÍ¬Ê±Ö»ÓĞÒ»¸öÄ¬ÈÏuserid
-  `prio` varchar(3) DEFAULT '0',	#	¶à¸ömac-userrole-useridµÄÅÅĞòÓÅÏÈ¼¶£»´óÓÚ0µÄ×î´óÖµ¿ÉÓÃÓÚ×Ô¶¯Ç©µ½
-  `userrole` varchar(30) DEFAULT NULL,	#	²»Í¬½ÇÉ«£¬Ã¿¸ömacÔÚÃ¿¸öuserroleÖĞÓĞÒ»¸ödefault userid #   100-´ú±í 200-¼Î±ö 300-Ã½Ìå 400-»áÎñ
-  `pntmaster` varchar(3) DEFAULT NULL,	#	»ı·ÖÖ÷¼ÇÂ¼±êÊ¶£¬100-´ËuseridÎªÖ÷¼ÇÂ¼£¬Ò»¸ömacÖ»¶ÔÒ»¸öuserid»ı·Ö
-  `memo` varchar(128) DEFAULT NULL,	#	±¸×¢
-  `srcip` varchar(64) DEFAULT NULL,	#	iserver×Ö¶Î
-  `sender` varchar(36) DEFAULT NULL, 	#	iserver×Ö¶Î
-  `netid` varchar(36) DEFAULT NULL, 	#	iserver×Ö¶Î
-  `progid` varchar(36) DEFAULT NULL, 	#	iserver×Ö¶Î
-  `updtime` datetime DEFAULT NULL,	#	¼ÇÂ¼¸üĞÂÊ±¼ä
-  `rectime` datetime DEFAULT NULL,	#	¼ÇÂ¼Ê±¼ä
+  `userid` varchar(36) DEFAULT NULL,	#	macå¯¹åº”çš„useridï¼Œå¤šå¯¹å¤šçš„å…³ç³»
+  `srcid` int DEFAULT NULL,	#	iserverå­—æ®µ
+  `token` int DEFAULT NULL,	#	8ä½éšæœºæ•°ï¼Œç”±ihostäº§ç”Ÿ
+  `srcnode` varchar(10) DEFAULT NULL,	#	ï¼ˆé¢„ç•™ï¼‰
+  `usercode` varchar(30) DEFAULT NULL,	#	ç”¨æˆ·ç¼–ç ï¼ˆé¢„ç•™ï¼‰
+  `mac` varchar(36) DEFAULT NULL,	#	ç”¨æˆ·çš„macåœ°å€ï¼ˆä¸€ä¸ªmacå¯ä»¥å¯¹å¤šç”¨æˆ·ï¼Œä¸€ä¸ªç”¨æˆ·å¯ä»¥æœ‰å¤šmacï¼‰
+  `phone` varchar(30) DEFAULT NULL,	#	ç”¨æˆ·æä¾›çš„æ‰‹æœºå·ï¼ˆä¸ç”¨æˆ·å¤šå¯¹å¤šå…³ç³»ï¼‰
+  `stat` varchar(3) DEFAULT '100',	#	æ•°æ®çŠ¶æ€ 100-æœ‰æ•ˆ 
+  `dft` varchar(3) DEFAULT '100',	#	100-æ­¤è®°å½•çš„mac-useridæ˜¯é»˜è®¤å€¼ï¼Œä¸€ä¸ªmacä¸€ä¸ªuserroleä¸‹åŒæ—¶åªæœ‰ä¸€ä¸ªé»˜è®¤userid
+  `prio` varchar(3) DEFAULT '0',	#	å¤šä¸ªmac-userrole-useridçš„æ’åºä¼˜å…ˆçº§ï¼›å¤§äº0çš„æœ€å¤§å€¼å¯ç”¨äºè‡ªåŠ¨ç­¾åˆ°
+  `userrole` varchar(30) DEFAULT NULL,	#	ä¸åŒè§’è‰²ï¼Œæ¯ä¸ªmacåœ¨æ¯ä¸ªuserroleä¸­æœ‰ä¸€ä¸ªdefault userid #   100-ä»£è¡¨ 200-å˜‰å®¾ 300-åª’ä½“ 400-ä¼šåŠ¡
+  `pntmaster` varchar(3) DEFAULT NULL,	#	ç§¯åˆ†ä¸»è®°å½•æ ‡è¯†ï¼Œ100-æ­¤useridä¸ºä¸»è®°å½•ï¼Œä¸€ä¸ªmacåªå¯¹ä¸€ä¸ªuseridç§¯åˆ†
+  `memo` varchar(128) DEFAULT NULL,	#	å¤‡æ³¨
+  `srcip` varchar(64) DEFAULT NULL,	#	iserverå­—æ®µ
+  `sender` varchar(36) DEFAULT NULL, 	#	iserverå­—æ®µ
+  `netid` varchar(36) DEFAULT NULL, 	#	iserverå­—æ®µ
+  `progid` varchar(36) DEFAULT NULL, 	#	iserverå­—æ®µ
+  `updtime` datetime DEFAULT NULL,	#	è®°å½•æ›´æ–°æ—¶é—´
+  `rectime` datetime DEFAULT NULL,	#	è®°å½•æ—¶é—´
   `pushflag` smallint DEFAULT '1',
   PRIMARY KEY (`id`),	#	
   KEY `userid` (`userid`),	#	
   KEY `usercode` (`usercode`)	#	
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;	#	
 
-DROP TABLE IF EXISTS `useractive`;	#	µ±Ç°»î¶¯ÓÃ»§
+DROP TABLE IF EXISTS `useractive`;	#	å½“å‰æ´»åŠ¨ç”¨æˆ·
 CREATE TABLE `useractive` (	#	
   `id` int NOT NULL AUTO_INCREMENT,	#	
-  `srcid` int DEFAULT NULL,	#	iserver×Ö¶Î
-  `mac` varchar(36) DEFAULT NULL,	#	ÓÃ»§µÄmacµØÖ·
-  `phone` varchar(30) DEFAULT NULL,	#	ÓÃ»§µÄÊÖ»úºÅ£¨ÓëÓÃ»§¶à¶Ô¶à¹ØÏµ£©
-  `userrole` varchar(30) DEFAULT NULL,	#	²»Í¬½ÇÉ«£¬Ã¿¸ömacÔÚÃ¿¸öuserroleÖĞÓĞÒ»¸ödefault userid
-  `userid` varchar(36) DEFAULT NULL,	#	mac¶ÔÓ¦µÄuserid£¬¶à¶Ô¶àµÄ¹ØÏµ
+  `srcid` int DEFAULT NULL,	#	iserverå­—æ®µ
+  `mac` varchar(36) DEFAULT NULL,	#	ç”¨æˆ·çš„macåœ°å€
+  `phone` varchar(30) DEFAULT NULL,	#	ç”¨æˆ·çš„æ‰‹æœºå·ï¼ˆä¸ç”¨æˆ·å¤šå¯¹å¤šå…³ç³»ï¼‰
+  `userrole` varchar(30) DEFAULT NULL,	#	ä¸åŒè§’è‰²ï¼Œæ¯ä¸ªmacåœ¨æ¯ä¸ªuserroleä¸­æœ‰ä¸€ä¸ªdefault userid
+  `userid` varchar(36) DEFAULT NULL,	#	macå¯¹åº”çš„useridï¼Œå¤šå¯¹å¤šçš„å…³ç³»
   `onsite` tinyint DEFAULT '0',  # 0-not on site; 1-onsite
   `online` tinyint DEFAULT '0',  # 0-not online; 1-online
-  `macfirst` datetime DEFAULT '1970-1-1 00:00:00',	#	macÊ×´Î·¢ÏÖÊ±¼ä
-  `macmark` datetime DEFAULT NULL,	#	mac±ê¼ÇÊ±¼ä£¬ÖĞÍ¾¸üĞÂ»ı·ÖÊ±Ê¹ÓÃ
-  `maclast` datetime DEFAULT '1970-1-1 00:00:00',	#	mac×îºóÒ»´Î·¢ÏÖÊ±¼ä
-  `pagefirst` datetime DEFAULT '1970-1-1 00:00:00',	#	Ê×´Î·ÃÎÊÕ¾µãÊ±¼ä
-  `pagemark` datetime DEFAULT NULL,	#	Õ¾µã±ê¼ÇÊ±¼ä£¬ÖĞÍ¾¸üĞÂ»ı·ÖÊ±Ê¹ÓÃ
-  `pagelast` datetime DEFAULT '1970-1-1 00:00:00',	#	Ä©´Î·ÃÎÊÕ¾µãÊ±¼ä
-  `updby` varchar(30) DEFAULT NULL,	#   ¸üĞÂ¼ÇÂ¼µÄ³ÌĞò
-  `insby` varchar(30) DEFAULT NULL,	#   ´´½¨¼ÇÂ¼µÄ³ÌĞò
-  `srcip` varchar(64) DEFAULT NULL,	#	iserver×Ö¶Î
-  `sender` varchar(36) DEFAULT NULL, 	#	iserver×Ö¶Î
-  `netid` varchar(36) DEFAULT NULL, 	#	iserver×Ö¶Î
-  `progid` varchar(36) DEFAULT NULL, 	#	iserver×Ö¶Î
-  `updtime` datetime DEFAULT NULL,	#	¼ÇÂ¼¸üĞÂÊ±¼ä
-  `rectime` datetime DEFAULT NULL,	#	¼ÇÂ¼Ê±¼ä
+  `macfirst` datetime DEFAULT '1970-1-1 00:00:00',	#	macé¦–æ¬¡å‘ç°æ—¶é—´
+  `macmark` datetime DEFAULT NULL,	#	macæ ‡è®°æ—¶é—´ï¼Œä¸­é€”æ›´æ–°ç§¯åˆ†æ—¶ä½¿ç”¨
+  `maclast` datetime DEFAULT '1970-1-1 00:00:00',	#	macæœ€åä¸€æ¬¡å‘ç°æ—¶é—´
+  `pagefirst` datetime DEFAULT '1970-1-1 00:00:00',	#	é¦–æ¬¡è®¿é—®ç«™ç‚¹æ—¶é—´
+  `pagemark` datetime DEFAULT NULL,	#	ç«™ç‚¹æ ‡è®°æ—¶é—´ï¼Œä¸­é€”æ›´æ–°ç§¯åˆ†æ—¶ä½¿ç”¨
+  `pagelast` datetime DEFAULT '1970-1-1 00:00:00',	#	æœ«æ¬¡è®¿é—®ç«™ç‚¹æ—¶é—´
+  `updby` varchar(128) DEFAULT NULL,	#   æ›´æ–°è®°å½•çš„ç¨‹åº
+  `insby` varchar(128) DEFAULT NULL,	#   åˆ›å»ºè®°å½•çš„ç¨‹åº
+  `srcip` varchar(64) DEFAULT NULL,	#	iserverå­—æ®µ
+  `sender` varchar(36) DEFAULT NULL, 	#	iserverå­—æ®µ
+  `netid` varchar(36) DEFAULT NULL, 	#	iserverå­—æ®µ
+  `progid` varchar(36) DEFAULT NULL, 	#	iserverå­—æ®µ
+  `updtime` datetime DEFAULT NULL,	#	è®°å½•æ›´æ–°æ—¶é—´
+  `rectime` datetime DEFAULT NULL,	#	è®°å½•æ—¶é—´
   `pushflag` smallint DEFAULT '1',
   PRIMARY KEY (`id`),	#	
   KEY `userid` (`mac`)	#		
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;	#	
+
