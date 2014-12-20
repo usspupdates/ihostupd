@@ -112,3 +112,8 @@ cp /usr/src/ihost/userpnt/pnt2user.py /media/data/ihost/userpnt/pnt2user.py
 # set pushflag when toggle between onsite/offsite, online/offline
 cp /usr/src/ihost/wlcap/onsite.py   /media/data/ihost/wlcap/onsite.py
 cp /usr/src/ihost/wlcap/onsitechk.py   /media/data/ihost/wlcap/onsitechk.py 
+
+
+# update rdpp.py, use local ipaddr as scrip whtn iftyp=local
+apt-get install python-netifaces
+cp /usr/src/ihost/wlcap/rdpp.py   /media/data/ihost/wlcap/rdpp.py
