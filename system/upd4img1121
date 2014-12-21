@@ -130,6 +130,8 @@ bash  /root/iserver.off.sh
 cp /usr/src/ihost/wlcap/clrdat.py /media/data/ihost/wlcap/clrdat.py
 ln  -sf  /media/data/ihost/wlcap/clrdat.py  /root/clrdat.py
 echo "@reboot sudo python /root/clrdat.py &" >> /var/spool/cron/crontabs/root
+mysql -uroot -prootatussp  wlsp <  /usr/src/ihost/db.schema/wlsp.sys.users.sql
+
 
 
 
