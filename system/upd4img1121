@@ -64,7 +64,8 @@ cp  -r  /var/lib/mysql/*  /media/data/ihost/db/
 chown  -R  mysql:mysql  /media/data/ihost/db
 sed -i 's|/var/lib/mysql|/media/data/ihost/db|g' /etc/mysql/my.cnf
 
-service  mysql restart
+service  mysql stop
+service  mysql start
 # new pnt2user.py using transaction
 cp  /usr/src/ihost/userpnt/pnt2user.py  /media/data/ihost/userpnt/pnt2user.py
 
@@ -117,3 +118,19 @@ cp /usr/src/ihost/wlcap/onsitechk.py   /media/data/ihost/wlcap/onsitechk.py
 # update rdpp.py, use local ipaddr as scrip whtn iftyp=local
 apt-get install python-netifaces
 cp /usr/src/ihost/wlcap/rdpp.py   /media/data/ihost/wlcap/rdpp.py
+
+# scripts for turning on/off data to iserver
+cp  /usr/src/ihost/system/base/iserver.on.sh  /media/data/ihost/system/base/iserver.on.sh
+ln  -sf  /media/data/ihost/system/base/iserver.on.sh  /root/iserver.on.sh
+cp  /usr/src/ihost/system/base/iserver.off.sh  /media/data/ihost/system/base/iserver.off.sh
+ln  -sf  /media/data/ihost/system/base/iserver.off.sh  /root/iserver.off.sh
+bash  /root/iserver.off.sh
+
+# remove out-of-date data from wlpkt and actvst
+cp /usr/src/ihost/wlcap/clrdat.py /media/data/ihost/wlcap/clrdat.py
+ln  -sf  /media/data/ihost/wlcap/clrdat.py  /root/clrdat.py
+echo "@reboot sudo python /root/clrdat.py &" >> /var/spool/cron/crontabs/root
+
+
+
+
