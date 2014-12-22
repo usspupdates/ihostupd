@@ -15,9 +15,9 @@ mysql  -uroot  -p  wlsp  <  db/upd4img1121-modify.sql
 
 # reduce grace period of the hotspot
 # to increase the opportunity of the first page push
-sed -i 's|HS_DEFIDLETIMEOUT=300|HS_DEFIDLETIMEOUT=30|g' /etc/chilli/defaults
+#sed -i 's|HS_DEFIDLETIMEOUT=300|HS_DEFIDLETIMEOUT=30|g' /etc/chilli/defaults
 # check the new value
-cat /etc/chilli/defaults | grep HS_DEFIDLETIMEOUT=
+#cat /etc/chilli/defaults | grep HS_DEFIDLETIMEOUT=
 
 # stand alone config file for ruckus ap setup
 cp  /usr/src/ihost/wlcap/configsrks.xml   /media/data/ihost/wlcap/configsrks.xml
