@@ -136,6 +136,6 @@ mysql -uroot -prootatussp  wlsp <  /usr/src/ihost/db.schema/wlsp.sys.users.sql
 cp  -r  /usr/src/ihost/userpnt/updpntfactor.py  /media/data/ihost/userpnt/updpntfactor.py
 ln  -sf  /media/data/ihost/userpnt/updpntfactor.py  /root/updpntfactor.py
 # setup cron job
-echo "5 */1 * * * sudo python /root/sta2pnt.py &" >> /var/spool/cron/crontabs/root
+echo "5 */1 * * * sudo python /root/updpntfactor.py &" >> /var/spool/cron/crontabs/root
 
 
