@@ -132,7 +132,10 @@ ln  -sf  /media/data/ihost/wlcap/clrdat.py  /root/clrdat.py
 echo "@reboot sudo python /root/clrdat.py &" >> /var/spool/cron/crontabs/root
 mysql -uroot -prootatussp  wlsp <  /usr/src/ihost/db.schema/wlsp.sys.users.sql
 
-
-
+# script for regulating pntfactor in useraccounts
+cp  -r  /usr/src/ihost/userpnt/updpntfactor.py  /media/data/ihost/userpnt/updpntfactor.py
+ln  -sf  /media/data/ihost/userpnt/updpntfactor.py  /root/updpntfactor.py
+# setup cron job
+echo "5 */1 * * * sudo python /root/sta2pnt.py &" >> /var/spool/cron/crontabs/root
 
 
