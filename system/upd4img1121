@@ -4,18 +4,20 @@ git pull
 # in /usr/src/ihostupd
 git pull
 
-# make /usr/bin/wlcap executive
-chmod  +x  /usr/bin/wlcap
+# sendsms (with upstream sms server)
+ln  -sf  /media/data/ihost/smssvc/smsupload.xml /root/smsupload.xml 
+ln  -sf  /media/data/ihost/smssvc/sms2iserver.py /root/sms2iserver.py
+echo "#@reboot sudo python /root/sms2iserver.py &" >> /var/spool/cron/crontabs/root
 
 # add column "userrole" in table "useraccounts"
-mysql  -uroot  -p  wlsp  <  db/upd4img1121-modify.sql
+###mysql  -uroot  -p  wlsp  <  db/upd4img1121-modify.sql
 #  - or -
 # rebuild table "useraccounts" with the added column "userrole"
 #mysql  -uroot  -p  wlsp  <  db/upd4img1121-rebuild.sql
 
 # reduce grace period of the hotspot
 # to increase the opportunity of the first page push
-#sed -i 's|HS_DEFIDLETIMEOUT=300|HS_DEFIDLETIMEOUT=30|g' /etc/chilli/defaults
+#sed -i 's|HS_DEFIDLETIMEOUT=300|HS_DEFIDLETIMEOUT=300|g' /etc/chilli/defaults
 # check the new value
 #cat /etc/chilli/defaults | grep HS_DEFIDLETIMEOUT=
 
@@ -34,7 +36,7 @@ ln  -sf  /media/data/ihost/userpnt/configpnt.xml  /root/configpnt.xml
 ln  -sf  /media/data/ihost/userpnt/sta2pnt.py  /root/sta2pnt.py
 ln  -sf  /media/data/ihost/userpnt/pnt2user.py  /root/pnt2user.py
 # prepare database tables
-mysql -uroot -p  wlsp <  /usr/src/ihostupd/db/tb4userpnt.sql
+###mysql -uroot -p  wlsp <  /usr/src/ihostupd/db/tb4userpnt.sql
 # setup cron job
 echo "*/1 * * * * sudo python /root/sta2pnt.py &" >> /var/spool/cron/crontabs/root
 echo "*/10 * * * * sudo python /root/pnt2user.py &" >> /var/spool/cron/crontabs/root
@@ -67,7 +69,7 @@ sed -i 's|/var/lib/mysql|/media/data/ihost/db|g' /etc/mysql/my.cnf
 service  mysql stop
 service  mysql start
 # new pnt2user.py using transaction
-cp  /usr/src/ihost/userpnt/pnt2user.py  /media/data/ihost/userpnt/pnt2user.py
+###cp  /usr/src/ihost/userpnt/pnt2user.py  /media/data/ihost/userpnt/pnt2user.py
 
 
 # uploading user data to iserver
@@ -80,7 +82,7 @@ echo "@reboot sudo python /root/user2iserver.py &" >> /var/spool/cron/crontabs/r
 # when uploading data to iserver
 # make use of mac address as sender
 # make use of python script name as progid
-cp /usr/src/ihost/datasvc/user2iserver.py   /media/data/ihost/datasvc/user2iserver.py
+###cp /usr/src/ihost/datasvc/user2iserver.py   /media/data/ihost/datasvc/user2iserver.py
 cp /usr/src/ihost/datasvc/wlsp2iserver.py  /media/data/ihost/datasvc/wlsp2iserver.py 
 cp /usr/src/ihost/smssvc/sms2iserver.py  /media/data/ihost/smssvc/sms2iserver.py
 # remove sender and progid column in xml
@@ -97,9 +99,9 @@ cp  /usr/src/ihost/home.admin/admin/sys/nodeset.php  /media/data/ihost/home.admi
 
 # when uploading data to iserver
 # make use of ssid in /etc/hostapd/hostapd.conf  as netid
-cp /usr/src/ihost/datasvc/user2iserver.py   /media/data/ihost/datasvc/user2iserver.py
-cp /usr/src/ihost/datasvc/wlsp2iserver.py  /media/data/ihost/datasvc/wlsp2iserver.py 
-cp /usr/src/ihost/smssvc/sms2iserver.py  /media/data/ihost/smssvc/sms2iserver.py
+###cp /usr/src/ihost/datasvc/user2iserver.py   /media/data/ihost/datasvc/user2iserver.py
+###cp /usr/src/ihost/datasvc/wlsp2iserver.py  /media/data/ihost/datasvc/wlsp2iserver.py 
+###cp /usr/src/ihost/smssvc/sms2iserver.py  /media/data/ihost/smssvc/sms2iserver.py
 # remove netid column in xml
 sed -i 's|netid="SSID-B" ||g' /media/data/ihost/datasvc/userupload.xml
 sed -i 's|netid="SSID-B" ||g' /media/data/ihost/datasvc/wlspupload.xml 
@@ -107,11 +109,11 @@ sed -i 's|netid="SSID-A" ||g' /media/data/ihost/smssvc/smsupload.xml
 sed -i 's|netid="SSID-B" ||g' /media/data/ihost/smssvc/smsupload.xml
 
 # update pnt2user.py, set pushflag after points transfer
-cp /usr/src/ihost/userpnt/pnt2user.py /media/data/ihost/userpnt/pnt2user.py
+###cp /usr/src/ihost/userpnt/pnt2user.py /media/data/ihost/userpnt/pnt2user.py
 
 # update onsite.py, set value for rectime & updtime
 # set pushflag when toggle between onsite/offsite, online/offline
-cp /usr/src/ihost/wlcap/onsite.py   /media/data/ihost/wlcap/onsite.py
+###cp /usr/src/ihost/wlcap/onsite.py   /media/data/ihost/wlcap/onsite.py
 cp /usr/src/ihost/wlcap/onsitechk.py   /media/data/ihost/wlcap/onsitechk.py 
 
 
@@ -139,3 +141,81 @@ ln  -sf  /media/data/ihost/userpnt/updpntfactor.py  /root/updpntfactor.py
 echo "5 */1 * * * sudo python /root/updpntfactor.py &" >> /var/spool/cron/crontabs/root
 
 
+# change ssid to ihost-xx, channel to 11
+sed -i 's|ssid=ihost|ssid=ihost-xx|g' /media/data/ihost/system/hostapd/hostapd.conf
+sed -i 's|channel=11|channel=11|g' /media/data/ihost/system/hostapd/hostapd.conf
+
+# make /usr/bin/wlcap executive
+chmod  +x  /usr/bin/wlcap
+
+# switch to hotspot mode 
+# issue an ssid named ihost-xx for wireless client
+bash  /usr/src/ihostupd/system/ihost.hotspot.on
+# switch to hotspot off 
+#bash  /usr/src/ihostupd/system/ihost.hotspot.off
+
+reboot
+
+
+# resize data partition, extend to max size
+root@ihost:~# fdisk /dev/mmcblk0
+
+Command (m for help): p
+Disk /dev/mmcblk0: 15.9 GB, 15931539456 bytes
+4 heads, 16 sectors/track, 486192 cylinders, total 31116288 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x000b5098
+
+        Device Boot      Start         End      Blocks   Id  System
+/dev/mmcblk0p1            8192      122879       57344    c  W95 FAT32 (LBA)
+/dev/mmcblk0p2          122880     7495679     3686400   83  Linux
+/dev/mmcblk0p3         7495680    31116287    11810304   83  Linux
+
+Command (m for help): d
+Partition number (1-4): 3
+
+Command (m for help): n
+Partition type:
+   p   primary (2 primary, 0 extended, 2 free)
+   e   extended
+Select (default p): p
+Partition number (1-4, default 3): 
+Using default value 3
+First sector (2048-31116287, default 2048): 7495680
+Last sector, +sectors or +size{K,M,G} (7495680-31116287, default 31116287): 
+Using default value 31116287
+
+Command (m for help): t
+Partition number (1-4): 3
+Hex code (type L to list codes): 83
+
+Command (m for help): p
+
+Disk /dev/mmcblk0: 15.9 GB, 15931539456 bytes
+4 heads, 16 sectors/track, 486192 cylinders, total 31116288 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x000b5098
+
+        Device Boot      Start         End      Blocks   Id  System
+/dev/mmcblk0p1            8192      122879       57344    c  W95 FAT32 (LBA)
+/dev/mmcblk0p2          122880     7495679     3686400   83  Linux
+/dev/mmcblk0p3         7495680    31116287    11810304   83  Linux
+
+Command (m for help): w
+The partition table has been altered!
+Calling ioctl() to re-read partition table.
+WARNING: Re-reading the partition table failed with error 16: Device or resource busy.
+The kernel still uses the old table. The new table will be used at
+the next reboot or after you run partprobe(8) or kpartx(8)
+Syncing disks.
+
+reboot
+
+partprobe
+e2fsck -f /dev/mmcblk0p3
+resize2fs /dev/mmcblk0p3
+sync
