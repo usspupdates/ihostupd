@@ -156,6 +156,8 @@ bash  /usr/src/ihostupd/system/ihost.hotspot.on
 
 reboot
 
+# scripts for turning on/off data to iserver
+bash  /root/iserver.on.sh
 
 # resize data partition, extend to max size
 root@ihost:~# fdisk /dev/mmcblk0
