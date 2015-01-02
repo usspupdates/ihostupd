@@ -173,7 +173,7 @@ Disk identifier: 0x000b5098
         Device Boot      Start         End      Blocks   Id  System
 /dev/mmcblk0p1            8192      122879       57344    c  W95 FAT32 (LBA)
 /dev/mmcblk0p2          122880     7495679     3686400   83  Linux
-/dev/mmcblk0p3         7495680    31116287    11810304   83  Linux
+/dev/mmcblk0p3         7495680     7905279      204800   83  Linux
 
 Command (m for help): d
 Partition number (1-4): 3
@@ -217,7 +217,7 @@ Syncing disks.
 
 reboot
 
-partprobe
-e2fsck -f /dev/mmcblk0p3
+#partprobe
+#e2fsck -f /dev/mmcblk0p3
 resize2fs /dev/mmcblk0p3
 sync
