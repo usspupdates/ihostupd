@@ -56,11 +56,11 @@ rm  -rf  /media/data/ihost/db/wlsp
 
 service  mysql start
 
-echo "drop database wlsp;" | mysql -uroot -prootatussp
-echo "create database wlsp;" | mysql -uroot -prootatussp
-mysql -uroot -prootatussp  wlsp <  /usr/src/ihost/db.schema/wlsp.sys.base.sql
-mysql -uroot -prootatussp  wlsp < /usr/src/ihost/db.schema/wlsp.sys.ihost.sql
-mysql -uroot -prootatussp  wlsp <  /usr/src/ihost/db.schema/wlsp.sys.users.sql
+echo "drop database wlsp;" | mysql -uroot -p
+echo "create database wlsp;" | mysql -uroot -p
+mysql -uroot -p  wlsp <  /usr/src/ihost/db.schema/wlsp.sys.base.sql
+mysql -uroot -p  wlsp < /usr/src/ihost/db.schema/wlsp.sys.ihost.sql
+mysql -uroot -p  wlsp <  /usr/src/ihost/db.schema/wlsp.sys.users.sql
 
 cp  -r  /var/lib/mysql/*  /media/data/ihost/db/
 chown  -R  mysql:mysql  /media/data/ihost/db
@@ -132,7 +132,7 @@ bash  /root/iserver.off.sh
 cp /usr/src/ihost/wlcap/clrdat.py /media/data/ihost/wlcap/clrdat.py
 ln  -sf  /media/data/ihost/wlcap/clrdat.py  /root/clrdat.py
 echo "@reboot sudo python /root/clrdat.py &" >> /var/spool/cron/crontabs/root
-mysql -uroot -prootatussp  wlsp <  /usr/src/ihost/db.schema/wlsp.sys.users.sql
+mysql -uroot -p  wlsp <  /usr/src/ihost/db.schema/wlsp.sys.users.sql
 
 # script for regulating pntfactor in useraccounts
 cp  -r  /usr/src/ihost/userpnt/updpntfactor.py  /media/data/ihost/userpnt/updpntfactor.py
@@ -163,7 +163,9 @@ cp  /usr/src/ihost/smssvc/sms2sserver.xml  /media/data/ihost/smssvc/sms2sserver.
 ln  -sf  /media/data/ihost/smssvc/sms2sserver.py  /root/sms2sserver.py
 ln  -sf  /media/data/ihost/smssvc/sms2sserver.xml  /root/sms2sserver.xml
 echo "@reboot sudo python /root/sms2sserver.py &" >> /var/spool/cron/crontabs/root
-# test sms: insert into authsms(sms,phone,rectime) values('test','13701272752',now());
+# test sms
+echo "insert into authsms(sms,phone,rectime) values('test','13701272752',now());" | mysql -uroot -p wlsp
+
 
 
 # change ssid to ihost-xx, channel to 11
