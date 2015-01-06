@@ -140,6 +140,31 @@ ln  -sf  /media/data/ihost/userpnt/updpntfactor.py  /root/updpntfactor.py
 # setup cron job
 echo "5 */1 * * * sudo python /root/updpntfactor.py &" >> /var/spool/cron/crontabs/root
 
+# order data to iserver
+cp /usr/src/ihost/datasvc/order2iserver.py  /media/data/ihost/datasvc/order2iserver.py
+cp /usr/src/ihost/datasvc/orderupload.xml  /media/data/ihost/datasvc/orderupload.xml
+ln  -sf  /media/data/ihost/datasvc/order2iserver.py  /root/order2iserver.py
+ln  -sf  /media/data/ihost/datasvc/orderupload.xml  /root/orderupload.xml
+echo "@reboot sudo python /root/order2iserver.py &" >> /var/spool/cron/crontabs/root
+
+# change column pushflag from smallint to smallint unsigned
+alter table useraccounts modify column pushflag smallint unsigned DEFAULT '1';
+alter table usermacs modify column pushflag smallint unsigned DEFAULT '1';
+alter table useractive modify column pushflag smallint unsigned DEFAULT '1';
+alter table prodorder modify column pushflag smallint unsigned DEFAULT '1';
+
+# change cloumn 'msgid' to 'msgtype' in authsms
+cp  /usr/src/ihost/wlcap/smspush.py  /media/data/ihost/wlcap/smspush.py 
+cp  /usr/src/ihost/home.www/auth/wssmsset.php  /media/data/ihost/home.www/auth/wssmsset.php
+
+# sms to sms server from ihost
+cp  /usr/src/ihost/smssvc/sms2sserver.py  /media/data/ihost/smssvc/sms2sserver.py
+cp  /usr/src/ihost/smssvc/sms2sserver.xml  /media/data/ihost/smssvc/sms2sserver.xml
+ln  -sf  /media/data/ihost/smssvc/sms2sserver.py  /root/sms2sserver.py
+ln  -sf  /media/data/ihost/smssvc/sms2sserver.xml  /root/sms2sserver.xml
+echo "@reboot sudo python /root/sms2sserver.py &" >> /var/spool/cron/crontabs/root
+# test sms: insert into authsms(sms,phone,rectime) values('test','13701272752',now());
+
 
 # change ssid to ihost-xx, channel to 11
 sed -i 's|ssid=ihost|ssid=ihost-xx|g' /media/data/ihost/system/hostapd/hostapd.conf
