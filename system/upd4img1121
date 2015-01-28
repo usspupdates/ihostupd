@@ -166,11 +166,30 @@ echo "@reboot sudo python /root/sms2sserver.py &" >> /var/spool/cron/crontabs/ro
 # test sms
 echo "insert into authsms(sms,phone,rectime) values('test','13701272752',now());" | mysql -uroot -p wlsp
 
-
+# more wlsta data to iserver; stat column in useraccounts&usermacs
+# no change in clrdat.py (changed and reseted)
+cp  /usr/src/ihost/datasvc/wlsp2iserver.py  /media/data/ihost/datasvc/wlsp2iserver.py 
+cp  /usr/src/ihost/datasvc/user2iserver.py  /media/data/ihost/datasvc/user2iserver.py
+cp  /usr/src/ihost/wlcap/clrdat.py  /media/data/ihost/wlcap/clrdat.py
+cp  /usr/src/ihost/wlcap/config.xml  /media/data/ihost/wlcap/config.xml
+sed -i 's|bang="-50"|bang="-75"|g' /root/config.xml
 
 # change ssid to ihost-xx, channel to 11
-sed -i 's|ssid=ihost|ssid=ihost-xx|g' /media/data/ihost/system/hostapd/hostapd.conf
+sed -i 's|ssid=ihost|ssid=Matrix-xx|g' /media/data/ihost/system/hostapd/hostapd.conf
 sed -i 's|channel=11|channel=11|g' /media/data/ihost/system/hostapd/hostapd.conf
+
+# greeting message
+ALTER TABLE useraccounts modify COLUMN `userrole` varchar(20) default '0';
+ALTER TABLE usermacs modify COLUMN `userrole` varchar(30) default '0';
+ALTER TABLE smspool change COLUMN `msgid` `msgtype` varchar(64) DEFAULT NULL;
+
+cp  /usr/src/ihost/smssvc/sms2sserver.py  /media/data/ihost/smssvc/sms2sserver.py
+cp  /usr/src/ihost/wlcap/greeting.py  /media/data/ihost/wlcap/greeting.py 
+cp  /usr/src/ihost/wlcap/smspush.py  /media/data/ihost/wlcap/smspush.py 
+
+# make  mtxwifi.com the domain name for  WLAN 
+echo "172.16.0.1    mtxwifi.net" >> /etc/hosts
+echo "172.16.0.1    www.mtxwifi.net" >> /etc/hosts
 
 # make /usr/bin/wlcap executive
 chmod  +x  /usr/bin/wlcap
