@@ -1,6 +1,12 @@
 # insert greeting message into smspool for the first time
 python /root/greeting.py
 
+# local dns server setting
+sed -i 's|nameserver 192.168.0.1|nameserver 127.0.0.1|g' /etc/resolv.conf
+
+# hotspot session time out & idle timeout
+sed -i 's|HS_DEFSESSIONTIMEOUT=86400|HS_DEFSESSIONTIMEOUT=86400|g' /etc/chilli/defaults
+sed -i 's|HS_DEFIDLETIMEOUT=300|HS_DEFIDLETIMEOUT=300|g' /etc/chilli/defaults
 
 # make /usr/bin/wlcap executive
 chmod  +x  /usr/bin/wlcap
