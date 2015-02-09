@@ -1,3 +1,10 @@
+# get up-to-date files
+# in /usr/src/ihost
+git pull
+# in /usr/src/ihostupd
+git pull
+
+
 # insert greeting message into smspool for the first time
 python /root/greeting.py
 
