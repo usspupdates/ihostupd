@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/pref_user_profile">
+        <EditTextPreference android:title="@string/pref_user_name"
+            android:summary="@string/pref_user_name_summary"
+            android:key="prefUsername"
+            android:defaultValue="user1"
+            >
+        </EditTextPreference>
+
+        <EditTextPreference android:title="@string/pref_user_phone"
+            android:summary="@string/pref_user_phone_summary"
+            android:key="prefUserPhone"
+            android:defaultValue="2064916276"
+            >
+        </EditTextPreference>
+
+        <EditTextPreference android:title="@string/pref_ihost_ip"
+            android:summary="@string/pref_ihost_ip_summary"
+            android:key="prefIhostIp"
+            android:defaultValue="172.16.0.1"
+            >
+
+        </EditTextPreference>
+
+        <EditTextPreference android:title="@string/pref_mac"
+            android:summary="@string/pref_mac_summary"
+            android:key="prefMac"
+            android:defaultValue="88-36-AA-FF-FF-BB"
+            >
+
+        </EditTextPreference>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_transactions_settings">
+        <EditTextPreference android:title="@string/pref_packet_size"
+            android:summary="@string/pref_packet_size_summary"
+            android:key="prefPacketSize"
+            android:defaultValue="1280"
+            >
+        </EditTextPreference>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_update_setting">
+        <CheckBoxPreference android:key="prefSendReport"
+            android:defaultValue="false"
+            android:summary="@string/pref_send_report_summary"
+            android:title="@string/pref_send_report">
+        </CheckBoxPreference>
+
+        <ListPreference android:key="prefSyncFrequency"
+            android:entries="@array/syncFrequency"
+            android:entryValues="@array/syncFrequencyValues"
+            android:summary="@string/pref_sync_frequency_summary"
+            android:title="@string/pref_sync_frequency">
+        </ListPreference>
+    </PreferenceCategory>
+</PreferenceScreen>
